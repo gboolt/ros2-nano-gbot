@@ -1,0 +1,3 @@
+[submodule "src/depends/gst-inference"]
+	path = src/depends/gst-inference
+	url = git@github.com:RidgeRun/gst-inference.git

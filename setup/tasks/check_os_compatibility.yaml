@@ -1,0 +1,13 @@
+- name: Print OS and distro Ansible variables collected by setup
+  ansible.builtin.debug:
+    msg:
+      - "ansible_os_family: {{ ansible_os_family }}"
+      - "ansible_distribution: {{ ansible_distribution }}"
+      - "ansible_distribution_major_version: {{ ansible_distribution_major_version }}"
+      - "ansible_distribution_version: {{ ansible_distribution_version }}"
+      - "ansible_distribution_release: {{ ansible_distribution_release }}"
+
+- name: Fail when using unsupported OS
+  ansible.builtin.fail:
+    msg: "Only supported OS is Ubuntu 22.04"
+  when: ansible_distribution != "Ubuntu" or ansible_distribution_version != "22.04"

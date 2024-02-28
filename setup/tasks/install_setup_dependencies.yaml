@@ -1,0 +1,17 @@
+- name: Update repositories cache
+  ansible.builtin.apt:
+    update_cache: true
+    cache_valid_time: 86400  # 1 Day
+  become: true
+
+- name: Install required debian packages
+  ansible.builtin.apt:
+    pkg:
+      - apt-transport-https
+      - curl
+      - gpg
+      - gcc-12
+      - locales
+      - wget
+    state: present
+  become: true

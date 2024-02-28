@@ -1,0 +1,23 @@
+# Build artifacts
+build/
+install/
+log/
+*.deb
+
+# IDE Artifacts
+.vscode
+
+# Filetypes we generaly do not want araound
+.DS_Store
+*.doc
+*.docx
+*.ppt
+*.pptx
+*.xls
+*.xlsx
+*.csv
+*.pth
+*.pcd
+
+# Assets Storage
+assets/

@@ -1,0 +1,14 @@
+- name: Update repositories cache
+  ansible.builtin.apt:
+    update_cache: true
+    cache_valid_time: 86400  # 1 Day
+  become: true
+
+# Add here-after project deps:
+
+# - name: Install required debian packages
+#   ansible.builtin.apt:
+#     pkg:
+#       - ros-humble-joy
+#     state: present
+#   become: true

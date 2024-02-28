@@ -1,0 +1,20 @@
+- name: Setup
+  hosts: localhost
+  tasks:
+    - name: "OS Compatibility Check"
+      ansible.builtin.include_tasks: "tasks/check_os_compatibility.yaml"
+
+    - name: "Install Setup Dependencies"
+      ansible.builtin.include_tasks: "tasks/install_setup_dependencies.yaml"
+
+    - name: "Install ROS2"
+      ansible.builtin.include_tasks: "tasks/install_ros2.yaml"
+
+    - name: "Install Project dependencies"
+      ansible.builtin.include_tasks: "tasks/install_project_dependencies.yaml"
+
+    - name: "Install Documentation Tools"
+      ansible.builtin.include_tasks: "tasks/install_documentation_tools.yaml"
+
+    - name: "Install SysOps Tools"
+      ansible.builtin.include_tasks: "tasks/install_sysops_tools.yaml"

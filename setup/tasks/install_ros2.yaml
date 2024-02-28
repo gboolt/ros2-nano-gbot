@@ -1,0 +1,32 @@
+- name: Ensure UTF8 locale is present
+  community.general.locale_gen:
+    name: en_US.UTF-8
+    state: present
+
+- name: Add ROS2 apt key
+  ansible.builtin.apt_key:
+    url: https://raw.githubusercontent.com/ros/rosdistro/master/ros.key
+    keyring: /usr/share/keyrings/ros-archive-keyring.gpg
+    state: present
+  become: true
+
+- name: Add ROS2 debian repository
+  ansible.builtin.apt_repository:
+    repo: deb [arch=amd64 signed-by=/usr/share/keyrings/ros-archive-keyring.gpg] http://packages.ros.org/ros2/ubuntu jammy main
+    state: present
+    update_cache: true
+  become: true
+
+- name: Install desktop ROS required packages
+  ansible.builtin.apt:
+    pkg:
+      - ros-dev-tools
+      - ros-humble-desktop
+    state: present
+  become: true
+
+- name: Make sure ros is sourced in the bashrc script
+  ansible.builtin.lineinfile:
+    path: "~/.bashrc"
+    line: "source /opt/ros/humble/setup.bash"
+    state: present
